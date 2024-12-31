@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>রেস্টুরেন্ট</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* ২ টি কলাম তৈরির জন্য */
+            gap: 10px;
+            justify-items: center; /* বাটনগুলোকে কেন্দ্রীভূত রাখা */
+        }
+
+        button {
+            padding: 15px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 200px; /* প্রস্থ নির্ধারণ */
+            color: white; /* সাদা টেক্সট */
+        }
+
+        .btn1 {
+            background-color: #007bff; /* নীল ব্যাকগ্রাউন্ড */
+        }
+
+        .btn1:hover {
+            background-color: #0056b3; /* হোভার অবস্থানে গাঢ় নীল */
+        }
+
+        .btn2 {
+            background-color: #28a745; /* সবুজ ব্যাকগ্রাউন্ড */
+        }
+
+        .btn2:hover {
+            background-color: #1e7e34; /* হোভার অবস্থানে গাঢ় সবুজ */
+        }
+
+        .btn3 {
+            background-color: #ffc107; /* হলুদ ব্যাকগ্রাউন্ড */
+        }
+
+        .btn3:hover {
+            background-color: #e0a800; /* হোভার অবস্থানে গাঢ় হলুদ */
+        }
+
+        .btn4 {
+            background-color: #dc3545; /* লাল ব্যাকগ্রাউন্ড */
+        }
+
+        .btn4:hover {
+            background-color: #bd2130; /* হোভার অবস্থানে গাঢ় লাল */
+        }
+
+        .btn5 {
+            background-color: #17a2b8; /* সায়ান ব্যাকগ্রাউন্ড */
+        }
+
+        .btn5:hover {
+            background-color: #117a8b; /* হোভার অবস্থানে গাঢ় সায়ান */
+        }
+
+        .btn6 {
+            background-color: #6c757d; /* ধূসর ব্যাকগ্রাউন্ড */
+        }
+
+        .btn6:hover {
+            background-color: #5a6268; /* হোভার অবস্থানে গাঢ় ধূসর */
+        }
+
+        .back-btn {
+            margin-top: 20px;
+            background-color: #007bff; /* নীল ব্যাকগ্রাউন্ড */
+            color: white; /* সাদা টেক্সট */
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            grid-column: span 2; /* ব্যাক বাটনকে সম্পূর্ণ প্রস্থতে রাখা */
+        }
+
+        .back-btn:hover {
+            background-color: #0056b3; /* হোভার অবস্থানে গাঢ় নীল */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="grid-column: span 2;">রেস্টুরেন্ট</h2> <!-- শিরোনামকে সম্পূর্ণ প্রস্থতে রাখা -->
+        <button class="btn1">লেখা ১</button>
+        <button class="btn2">লেখা ২</button>
+        <button class="btn3">লেখা ৩</button>
+        <button class="btn4">লেখা ৪</button>
+        <button class="btn5">লেখা ৫</button>
+        <button class="btn6">লেখা ৬</button>
+        <button class="back-btn" onclick="window.location.href='index.html'">Back</button>
+    </div>
+</body>
+</html>

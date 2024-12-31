@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        header {
+            width: 100%;
+            position: relative;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            padding: 1rem;
+            z-index: 1;
+        }
+
+        h1 {
+            margin: 0;
+            background-color: #28a745; /* সবুজ ব্যাকগ্রাউন্ড */
+            color: #ffffff; /* সাদা টেক্সট */
+            font-weight: bold; /* টেক্সট bold */
+            padding: 1rem;
+            border-radius: 8px;
+            z-index: 1;
+        }
+
+        .fade-text {
+            background-color: #ff0000; /* লাল ব্যাকগ্রাউন্ড */
+            color: #ffffff; /* সাদা টেক্সট */
+            font-weight: bold; /* টেক্সট bold */
+            padding: 1rem;
+            border-radius: 8px;
+            display: inline-block;
+            animation: fadeText 10s infinite; /* 10 সেকেন্ড এনিমেশন, অসীম চক্র */
+            z-index: 1;
+        }
+
+        .button-container {
+            margin-top: 20px; /* বাটনের অবস্থান আরও নিচে */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* ৩ টি কলাম তৈরির জন্য */
+            gap: 10px;
+            justify-items: center; /* বাটনগুলোকে কেন্দ্রীভূত রাখা */
+            z-index: 1;
+        }
+
+        button {
+            background-color: #007bff; /* নীল ব্যাকগ্রাউন্ড */
+            color: white; /* সাদা টেক্সট */
+            padding: 15px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 200px; /* প্রস্থ নির্ধারণ */
+        }
+
+        button:hover {
+            background-color: #0056b3; /* হোভার অবস্থানে গাঢ় নীল */
+        }
+
+        @keyframes fadeText {
+            0%, 100% { opacity: 0; }
+            10%, 40% { opacity: 1; }
+            50%, 70% { opacity: 0; }
+            80%, 90% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Our Sylhet এ আপনাকে স্বাগতম</h1>
+        <p class="fade-text">আপডেট এর কাজ চলছে</p>
+        <p class="fade-text">ধন্যবাদ সাথে থাকার জন্য</p>
+    </header>
+    <div class="button-container">
+        <button onclick="window.location.href='doctor.html'">ডাক্তার</button>
+        <button onclick="window.location.href='hospital.html'">হাসপাতাল</button>
+        <button onclick="window.location.href='center.html'"> ডায়াগনস্টিক সেন্টার</button>
+        <button onclick="window.location.href='roktodan.html'">রক্ত দান</button>
+        <button onclick="window.location.href='touristplace.html'">দর্শনীয় স্থান</button>
+        <button onclick="window.location.href='resturent.html'">রেস্টুরেন্ট</button>
+        <button onclick="window.location.href='resort.html'">রিসোর্ট</button>
+        <button onclick="window.location.href='train.html'">ট্রেন সময়সূচী</button>
+        <button onclick="window.location.href='bus.html'">বাস সময়সূচী</button>
+	    <button onclick="window.location.href='basavara.html'">বাসা ভাড়া</button>
+    </div>
+</body>
+</html>

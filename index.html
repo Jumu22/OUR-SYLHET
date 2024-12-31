@@ -11,14 +11,11 @@
             padding: 0;
             background-color: #f4f4f4;
             text-align: center;
+            overflow-x: hidden; /* ডানে-বামে সরানো বন্ধ করতে */
         }
 
         header {
             width: 100%;
-            position: relative;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
             background-color: #333;
             padding: 1rem;
             z-index: 1;
@@ -48,7 +45,7 @@
         .button-container {
             margin-top: 20px; /* বাটনের অবস্থান আরও নিচে */
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* ৩ টি কলাম তৈরির জন্য */
+            grid-template-columns: repeat(2, 1fr); /* ২ টি কলাম তৈরির জন্য */
             gap: 10px;
             justify-items: center; /* বাটনগুলোকে কেন্দ্রীভূত রাখা */
             z-index: 1;
@@ -63,7 +60,8 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
-            width: 200px; /* প্রস্থ নির্ধারণ */
+            width: 100%; /* প্রস্থ নির্ধারণ */
+            box-sizing: border-box; /* বর্ডার এবং প্যাডিং সহ প্রস্থ */
         }
 
         button:hover {

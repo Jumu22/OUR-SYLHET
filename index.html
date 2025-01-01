@@ -16,7 +16,7 @@
             flex-direction: column;
             justify-content: center; /* মোবাইল স্ক্রিনের মাঝামাঝি রাখতে */
             height: 100vh; /* পুরো ভিউপোর্টের উচ্চতা */
-            background-image: url('1.jpg.webp'); /* ব্যাকগ্রাউন্ড ইমেজের URL */
+            background-image: url('your-image-url.jpg'); /* ব্যাকগ্রাউন্ড ইমেজের URL */
             background-size: cover; /* ইমেজকে পুরো ব্যাকগ্রাউন্ডে ফিট করতে */
             background-position: center; /* ইমেজকে কেন্দ্র অবস্থানে রাখতে */
         }
@@ -28,18 +28,8 @@
             z-index: 1;
         }
 
-        h1 {
-            margin: 0;
-            background-color: #28a745; /* সবুজ ব্যাকগ্রাউন্ড */
-            color: #ffffff; /* সাদা টেক্সট */
-            font-weight: bold; /* টেক্সট bold */
-            padding: 1rem;
-            border-radius: 8px;
-            z-index: 1;
-        }
-
         .fade-text {
-            background-color: #ff0000; /* লাল ব্যাকগ্রাউন্ড */
+            background-color: rgba(255, 0, 0, 0.8); /* লাল ব্যাকগ্রাউন্ড ট্রান্সপারেন্ট */
             color: #ffffff; /* সাদা টেক্সট */
             font-weight: bold; /* টেক্সট bold */
             padding: 1rem;
@@ -59,20 +49,31 @@
         }
 
         button {
-            background-color: #007bff; /* নীল ব্যাকগ্রাউন্ড */
+            background-color: rgba(0, 123, 255, 0.8); /* নীল ব্যাকগ্রাউন্ড ট্রান্সপারেন্ট */
             color: white; /* সাদা টেক্সট */
             padding: 10px 15px; /* বাটনের সাইজ ছোট করা */
             margin: 10px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 14px; /* ফন্ট সাইজ ছোট করা */
-            width: 90px; /* প্রস্থ ছোট করা */
+            font-size: 16px; /* ফন্ট সাইজ নির্ধারণ */
+            width: 120px; /* প্রস্থ নির্ধারণ */
+            height: 40px; /* উচ্চতা নির্ধারণ */
+            display: flex; /* কেন্দ্রীভূত রাখতে flexbox ব্যবহার */
+            align-items: center; /* উল্লম্বভাবে কেন্দ্রভূত করা */
+            justify-content: center; /* অনুভূমিকভাবে কেন্দ্রভূত করা */
             box-sizing: border-box; /* বর্ডার এবং প্যাডিং সহ প্রস্থ */
         }
 
+        button img {
+            width: 20px; /* আইকনের প্রস্থ নির্ধারণ */
+            height: 20px; /* আইকনের উচ্চতা নির্ধারণ */
+            margin-right: 5px; /* আইকনের ডান পাশে ফাঁকা রাখা */
+            vertical-align: middle; /* আইকনকে উল্লম্বভাবে কেন্দ্রভূত করা */
+        }
+
         button:hover {
-            background-color: #0056b3; /* হোভার অবস্থানে গাঢ় নীল */
+            background-color: rgba(0, 86, 179, 0.8); /* হোভার অবস্থানে গাঢ় নীল ট্রান্সপারেন্ট */
         }
 
         @keyframes fadeText {
@@ -81,17 +82,29 @@
             50%, 70% { opacity: 0; }
             80%, 90% { opacity: 1; }
         }
+
+        @media (max-width: 768px) {
+            header {
+                font-size: 24px; /* মোবাইল স্ক্রিনের জন্য ফন্ট সাইজ */
+                padding: 0.5rem; /* মোবাইল স্ক্রিনের জন্য প্যাডিং */
+                margin-top: 20px; /* মোবাইল স্ক্রিনে উপরের মার্জিন */
+            }
+            .fade-text {
+                font-size: 20px; /* মোবাইল স্ক্রিনের জন্য ফন্ট সাইজ */
+                padding: 0.5rem; /* মোবাইল স্ক্রিনের জন্য প্যাডিং */
+            }
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Our Sylhet এ আপনাকে স্বাগতম</h1>
-        <p class="fade-text">আপডেট এর কাজ চলছে</p>
-        <p class="fade-text">ধন্যবাদ সাথে থাকার জন্য</p>
+        <div></div>
+        <div></div>
+        <p class="fade-text">Our Sylhet</p>
     </header>
     <div class="button-container">
-        <button onclick="window.location.href='doctor.html'">ডাক্তার</button>
-        <button onclick="window.location.href='hospital.html'">হাসপাতাল</button>
+        <button onclick="window.location.href='doctor.html'"><img src="doctor.png" alt="Icon"> ডাক্তার</button>
+        <button onclick="window.location.href='hospital.html'"><img src="hospital.png" alt="Icon"> হাসপাতাল</button>
         <button onclick="window.location.href='center.html'"> ডায়াগনস্টিক সেন্টার</button>
         <button onclick="window.location.href='roktodan.html'">রক্ত দান</button>
         <button onclick="window.location.href='touristplace.html'">দর্শনীয় স্থান</button>

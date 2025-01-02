@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>বাস সময়সুচী</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>বাস</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,8 +11,14 @@
             padding: 0;
             background-color: #f4f4f4;
             text-align: center;
+            overflow-x: hidden; /* ডানে-বামে সরানো বন্ধ করতে */
+            overflow-y: hidden; /* উপরে-নিচে সরানো বন্ধ করতে */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* মোবাইল স্ক্রিনের মাঝামাঝি রাখতে */
+            height: 100vh; /* পুরো ভিউপোর্টের উচ্চতা */
+            background-position: center; /* ইমেজকে কেন্দ্র অবস্থানে রাখতে */
         }
-
         .container {
             margin-top: 50px;
             display: grid;
@@ -22,91 +28,80 @@
         }
 
         button {
-            padding: 15px 20px;
+            background-color: rgba(0, 123, 255, 0.8); /* নীল ব্যাকগ্রাউন্ড ট্রান্সপারেন্ট */
+            color: black; /* সাদা টেক্সট */
+            padding: 20px 25px; /* বাটনের সাইজ নির্ধারণ */
             margin: 10px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
-            width: 200px; /* প্রস্থ নির্ধারণ */
+            font-size: 15px; /* ফন্ট সাইজ নির্ধারণ */
+            width: 130px; /* প্রস্থ নির্ধারণ */
+            height: 50px; /* উচ্চতা নির্ধারণ */
+            display: flex; /* কেন্দ্রীভূত রাখতে flexbox ব্যবহার */
+            align-items: center; /* উল্লম্বভাবে কেন্দ্রভূত করা */
+            justify-content: center; /* অনুভূমিকভাবে কেন্দ্রভূত করা */
+            box-sizing: border-box; /* বর্ডার এবং প্যাডিং সহ প্রস্থ */
+        }
+
+        button img {
+            width: 30px; /* আইকনের প্রস্থ নির্ধারণ */
+            height: 30px; /* আইকনের উচ্চতা নির্ধারণ */
+            margin-right: 5px; /* আইকনের ডান পাশে ফাঁকা রাখা */
+            vertical-align: middle; /* আইকনকে উল্লম্বভাবে কেন্দ্রভূত করা */
+        }
+
+        button:hover {
+            background-color: rgba(0, 86, 179, 0.8); /* হোভার অবস্থানে গাঢ় নীল ট্রান্সপারেন্ট */
+        }
+
+        .floating-btn {
+            position: fixed; /* স্থির অবস্থানে রাখা */
+            bottom: 20px; /* নিচ থেকে দূরত্ব */
+            left: 50%; /* বাম থেকে দূরত্ব */
+            transform: translateX(-50%); /* অনুভূমিকভাবে কেন্দ্রভূত করা */
+            background-color: rgba(0, 123, 255, 0.8); /* নীল ব্যাকগ্রাউন্ড ট্রান্সপারেন্ট */
             color: white; /* সাদা টেক্সট */
-        }
-
-        .btn1 {
-            background-color: #007bff; /* নীল ব্যাকগ্রাউন্ড */
-        }
-
-        .btn1:hover {
-            background-color: #0056b3; /* হোভার অবস্থানে গাঢ় নীল */
-        }
-
-        .btn2 {
-            background-color: #28a745; /* সবুজ ব্যাকগ্রাউন্ড */
-        }
-
-        .btn2:hover {
-            background-color: #1e7e34; /* হোভার অবস্থানে গাঢ় সবুজ */
-        }
-
-        .btn3 {
-            background-color: #ffc107; /* হলুদ ব্যাকগ্রাউন্ড */
-        }
-
-        .btn3:hover {
-            background-color: #e0a800; /* হোভার অবস্থানে গাঢ় হলুদ */
-        }
-
-        .btn4 {
-            background-color: #dc3545; /* লাল ব্যাকগ্রাউন্ড */
-        }
-
-        .btn4:hover {
-            background-color: #bd2130; /* হোভার অবস্থানে গাঢ় লাল */
-        }
-
-        .btn5 {
-            background-color: #17a2b8; /* সায়ান ব্যাকগ্রাউন্ড */
-        }
-
-        .btn5:hover {
-            background-color: #117a8b; /* হোভার অবস্থানে গাঢ় সায়ান */
-        }
-
-        .btn6 {
-            background-color: #6c757d; /* ধূসর ব্যাকগ্রাউন্ড */
-        }
-
-        .btn6:hover {
-            background-color: #5a6268; /* হোভার অবস্থানে গাঢ় ধূসর */
-        }
-
-        .back-btn {
-            margin-top: 20px;
-            background-color: #007bff; /* নীল ব্যাকগ্রাউন্ড */
-            color: white; /* সাদা টেক্সট */
-            padding: 10px 15px;
+            padding: 20px 25px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
-            grid-column: span 2; /* ব্যাক বাটনকে সম্পূর্ণ প্রস্থতে রাখা */
+            font-size: 15px;
+            width: 130px; /* প্রস্থ নির্ধারণ */
+            height: 50px; /* উচ্চতা নির্ধারণ */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box; /* বর্ডার এবং প্যাডিং সহ প্রস্থ */
         }
 
-        .back-btn:hover {
-            background-color: #0056b3; /* হোভার অবস্থানে গাঢ় নীল */
+        .floating-btn img {
+            width: 30px;
+            height: 30px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        .floating-btn:hover {
+            background-color: rgba(0, 86, 179, 0.8); /* হোভার অবস্থানে গাঢ় নীল ট্রান্সপারেন্ট */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2 style="grid-column: span 2;">বাস সময়সুচী</h2> <!-- শিরোনামকে সম্পূর্ণ প্রস্থতে রাখা -->
-        <button class="btn1">লেখা ১</button>
-        <button class="btn2">লেখা ২</button>
-        <button class="btn3">লেখা ৩</button>
-        <button class="btn4">লেখা ৪</button>
-        <button class="btn5">লেখা ৫</button>
-        <button class="btn6">লেখা ৬</button>
-        <button class="back-btn" onclick="window.location.href='index.html'">Back</button>
+        <h2 style="grid-column: span 2;">বাস</h2> <!-- শিরোনামকে সম্পূর্ণ প্রস্থতে রাখা -->
+        <button onclick="window.location.href='sisu.html'"><img src="doctor.png" alt="Icon"> শিশু বিশেষজ্ঞ</button>
+        <button onclick="window.location.href='gaini.html'"><img src="hospital.png" alt="Icon"> গাইনি এন্ড অবস</button>
+        <button><img src="healthcare.png" alt="Icon"> লেখা ৩</button>
+        <button><img src="blood-donation.png" alt="Icon"> লেখা ৪</button>
+         <button><img src="healthcare.png" alt="Icon"> লেখা ৩</button>
+        <button><img src="blood-donation.png" alt="Icon"> লেখা ৪</button> <button><img src="healthcare.png" alt="Icon"> লেখা ৩</button>
+        <button><img src="blood-donation.png" alt="Icon"> লেখা ৪</button> <button><img src="healthcare.png" alt="Icon"> লেখা ৩</button>
+        <button><img src="blood-donation.png" alt="Icon"> লেখা ৪</button> <button><img src="healthcare.png" alt="Icon"> লেখা ৩</button>
+        <button><img src="blood-donation.png" alt="Icon"> লেখা ৪</button>
+        <button><img src="location.png" alt="Icon"> লেখা ৫</button>
+        <button><img src="vegetarian.png" alt="Icon"> লেখা ৬</button>
+        <button class="floating-btn" onclick="window.location.href='index.html'"><img src="back.png" alt="Icon"> Back</button>
     </div>
 </body>
 </html>

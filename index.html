@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <!-- জুম বন্ধ করতে user-scalable=no যোগ করুন -->
-    <title>My Web App</title>
+    <title>Our Sylhet</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,7 +16,7 @@
             flex-direction: column;
             justify-content: center; /* মোবাইল স্ক্রিনের মাঝামাঝি রাখতে */
             height: 100vh; /* পুরো ভিউপোর্টের উচ্চতা */
-            background-image: url('your-image-url.jpg'); /* ব্যাকগ্রাউন্ড ইমেজের URL */
+            background-image: url('your-background-image-url.jpg'); /* ব্যাকগ্রাউন্ড ইমেজের URL */
             background-size: cover; /* ইমেজকে পুরো ব্যাকগ্রাউন্ডে ফিট করতে */
             background-position: center; /* ইমেজকে কেন্দ্র অবস্থানে রাখতে */
         }
@@ -26,6 +26,40 @@
             background-color: rgba(51, 51, 51, 0.8); /* ব্যাকগ্রাউন্ড কালার সামান্য ট্রান্সপারেন্ট */
             padding: 1rem;
             z-index: 1;
+            display: flex; /* Flexbox ব্যবহার করা */
+            justify-content: center; /* অনুভূমিকভাবে কেন্দ্রভূত করা */
+            align-items: center; /* উল্লম্বভাবে কেন্দ্রভূত করা */
+            flex-direction: column; /* সব আইটেমগুলো একই সারিতে রাখা */
+        }
+
+        header h3 {
+            margin: 0; /* h3 এর উপরে এবং নিচে স্পেস সরাতে */
+            color: white; /* h3 এর কালার নির্ধারণ */
+            background-color: transparent; /* ব্যাকগ্রাউন্ড ট্রান্সপারেন্ট করা */
+        }
+
+        header h4 {
+            margin: 0; /* h4 এর উপরে এবং নিচে স্পেস সরাতে */
+            color: #00ced1; /* h4 এর কালার নির্ধারণ */
+            background-color: transparent; /* ব্যাকগ্রাউন্ড ট্রান্সপারেন্ট করা */
+        }
+
+        header h5 {
+            margin: 0; /* h5 এর উপরে এবং নিচে স্পেস সরাতে */
+            color: yellow; /* h5 এর কালার হলুদ */
+            background-color: black; /* ব্যাকগ্রাউন্ড কালো */
+            width: 120%; /* পুরো প্রস্থ জুড়ে */
+            white-space: nowrap; /* টেক্সট ব্রেক না করার জন্য */
+            overflow: hidden; /* স্ক্রোলিং করতে */
+            display: flex; /* Flexbox ব্যবহার করা */
+            justify-content: center; /* অনুভূমিকভাবে কেন্দ্রভূত করা */
+            align-items: center; /* উল্লম্বভাবে কেন্দ্রভূত করা */
+            animation: scrollText 20s linear infinite; /* টেক্সট স্ক্রোলিং এনিমেশন */
+        }
+
+        @keyframes scrollText {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
         }
 
         .fade-text {
@@ -50,13 +84,13 @@
 
         button {
             background-color: rgba(0, 123, 255, 0.8); /* নীল ব্যাকগ্রাউন্ড ট্রান্সপারেন্ট */
-            color: white; /* সাদা টেক্সট */
+            color: black; /* সাদা টেক্সট */
             padding: 10px 15px; /* বাটনের সাইজ ছোট করা */
             margin: 10px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px; /* ফন্ট সাইজ নির্ধারণ */
+            font-size: 12px; /* ফন্ট সাইজ নির্ধারণ */
             width: 120px; /* প্রস্থ নির্ধারণ */
             height: 40px; /* উচ্চতা নির্ধারণ */
             display: flex; /* কেন্দ্রীভূত রাখতে flexbox ব্যবহার */
@@ -94,25 +128,31 @@
                 padding: 0.5rem; /* মোবাইল স্ক্রিনের জন্য প্যাডিং */
             }
         }
+
+        img.small-img {
+            width: 100px; /* ইমেজের প্রস্থ নির্ধারণ */
+            height: auto; /* অনুপাতে উচ্চতা রাখুন */
+            margin-top: 10px; /* ইমেজের উপরের মার্জিন */
+        }
     </style>
 </head>
 <body>
     <header>
-        <div></div>
-        <div></div>
-        <p class="fade-text">Our Sylhet</p>
+        <h3>আসসালামু আলাইকুম</h3>
+        <h4>আমি জুম্মান Our Sylhet এ আপনাকে স্বাগতম</h4>
+        <h5>আপডেট এর কাজ চলছে সাথে থাকুন</h5>
     </header>
     <div class="button-container">
         <button onclick="window.location.href='doctor.html'"><img src="doctor.png" alt="Icon"> ডাক্তার</button>
         <button onclick="window.location.href='hospital.html'"><img src="hospital.png" alt="Icon"> হাসপাতাল</button>
-        <button onclick="window.location.href='center.html'"> ডায়াগনস্টিক সেন্টার</button>
-        <button onclick="window.location.href='roktodan.html'">রক্ত দান</button>
-        <button onclick="window.location.href='touristplace.html'">দর্শনীয় স্থান</button>
-        <button onclick="window.location.href='resturent.html'">রেস্টুরেন্ট</button>
-        <button onclick="window.location.href='resort.html'">রিসোর্ট</button>
-        <button onclick="window.location.href='train.html'">ট্রেন সময়সূচী</button>
-        <button onclick="window.location.href='bus.html'">বাস সময়সূচী</button>
-        <button onclick="window.location.href='basavara.html'">বাসা ভাড়া</button>
+        <button onclick="window.location.href='center.html'"><img src="healthcare.png" alt="Icon"> ডায়াগনস্টিক সেন্টার</button>
+        <button onclick="window.location.href='roktodan.html'"><img src="blood-donation.png" alt="Icon"> রক্ত দান</button>
+        <button onclick="window.location.href='touristplace.html'"><img src="location.png" alt="Icon"> দর্শনীয় স্থান</button>
+        <button onclick="window.location.href='resturent.html'"><img src="vegetarian.png" alt="Icon"> রেস্টুরেন্ট</button>
+        <button onclick="window.location.href='resort.html'"><img src="hotel.png" alt="Icon"> রিসোর্ট</button>
+        <button onclick="window.location.href='train.html'"><img src="train.png" alt="Icon"> ট্রেন সময়সূচী</button>
+        <button onclick="window.location.href='bus.html'"><img src="bus-schedule.png" alt="Icon"> বাস সময়সূচী</button>
+        <button onclick="window.location.href='basavara.html'"><img src="rent.png" alt="Icon"> বাসা ভাড়া</button>
     </div>
 </body>
 </html>

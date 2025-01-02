@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>গাইনী</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>ডাক্তার</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,156 +11,97 @@
             padding: 0;
             background-color: #f4f4f4;
             text-align: center;
-        }
-
-        .container {
+            overflow-x: hidden; /* ডানে-বামে সরানো বন্ধ করতে */
+            overflow-y: hidden; /* উপরে-নিচে সরানো বন্ধ করতে */
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 20px; /* ব্লকের মাঝে ফাঁকা */
-            padding: 20px;
+            justify-content: center; /* মোবাইল স্ক্রিনের মাঝামাঝি রাখতে */
+            height: 100vh; /* পুরো ভিউপোর্টের উচ্চতা */
+            background-position: center; /* ইমেজকে কেন্দ্র অবস্থানে রাখতে */
+        }
+        .container {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* ২ টি কলাম তৈরির জন্য */
+            gap: 10px;
+            justify-items: center; /* বাটনগুলোকে কেন্দ্রীভূত রাখা */
         }
 
-        .info-box {
-            padding: 20px;
-            background-color: #ffffff; /* সাদা ব্যাকগ্রাউন্ড */
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* shadow */
-            width: 90%; /* প্রস্থ নির্ধারণ */
-            max-width: 500px; /* সর্বোচ্চ প্রস্থ নির্ধারণ */
-        }
-
-        .call-number {
-            color: #007bff; /* নীল টেক্সট */
-            text-decoration: underline; /* টেক্সটের নিচে রেখা */
-            cursor: pointer; /* ক্লিকযোগ্য */
-        }
-
-        .back-btn {
-            margin-top: 20px;
-            background-color: #007bff; /* নীল ব্যাকগ্রাউন্ড */
-            color: white; /* সাদা টেক্সট */
-            padding: 10px 15px;
+        button {
+            background-color: rgba(0, 123, 255, 0.8); /* নীল ব্যাকগ্রাউন্ড ট্রান্সপারেন্ট */
+            color: black; /* সাদা টেক্সট */
+            padding: 20px 25px; /* বাটনের সাইজ নির্ধারণ */
+            margin: 10px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 15px; /* ফন্ট সাইজ নির্ধারণ */
+            width: 130px; /* প্রস্থ নির্ধারণ */
+            height: 50px; /* উচ্চতা নির্ধারণ */
+            display: flex; /* কেন্দ্রীভূত রাখতে flexbox ব্যবহার */
+            align-items: center; /* উল্লম্বভাবে কেন্দ্রভূত করা */
+            justify-content: center; /* অনুভূমিকভাবে কেন্দ্রভূত করা */
+            box-sizing: border-box; /* বর্ডার এবং প্যাডিং সহ প্রস্থ */
         }
 
-        .back-btn:hover {
-            background-color: #0056b3; /* হোভার অবস্থানে গাঢ় নীল */
+        button img {
+            width: 30px; /* আইকনের প্রস্থ নির্ধারণ */
+            height: 30px; /* আইকনের উচ্চতা নির্ধারণ */
+            margin-right: 5px; /* আইকনের ডান পাশে ফাঁকা রাখা */
+            vertical-align: middle; /* আইকনকে উল্লম্বভাবে কেন্দ্রভূত করা */
+        }
+
+        button:hover {
+            background-color: rgba(0, 86, 179, 0.8); /* হোভার অবস্থানে গাঢ় নীল ট্রান্সপারেন্ট */
+        }
+
+        .floating-btn {
+            position: fixed; /* স্থির অবস্থানে রাখা */
+            bottom: 20px; /* নিচ থেকে দূরত্ব */
+            left: 50%; /* বাম থেকে দূরত্ব */
+            transform: translateX(-50%); /* অনুভূমিকভাবে কেন্দ্রভূত করা */
+            background-color: rgba(0, 123, 255, 0.8); /* নীল ব্যাকগ্রাউন্ড ট্রান্সপারেন্ট */
+            color: white; /* সাদা টেক্সট */
+            padding: 20px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+            width: 130px; /* প্রস্থ নির্ধারণ */
+            height: 50px; /* উচ্চতা নির্ধারণ */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box; /* বর্ডার এবং প্যাডিং সহ প্রস্থ */
+        }
+
+        .floating-btn img {
+            width: 30px;
+            height: 30px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        .floating-btn:hover {
+            background-color: rgba(0, 86, 179, 0.8); /* হোভার অবস্থানে গাঢ় নীল ট্রান্সপারেন্ট */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- প্রথম ব্লক -->
-        <div class="info-box">
-            <p>নাম: ডাঃ মৌমিতা জামান খান</p>
-            <p>যোগ্যতা: এমবিবিএস (ঢাকা মেডিকেল কলেজ্‌ এফসিপিএস (গাইনী এন্ড অবস) শেষ পর্ব, প্রাক্তন মেডিকেল অফিসার, জালালাবাদ রাগীব রাবেয়া মেডিকেল কলেজ ও হাসপাতাল, সিলেট
-
-বিএমডিসি রেজিঃ নং: এ-৬৯৮৬০</p>
-            <p>রোগীয় দেখার স্থান: দি মডার্ন ডায়াগনস্টিক এন্ড কনসালটেশন সেন্টার
-
-শ্রীমঙ্গল রোড, বেরীর পাড়, মৌলভীবাজার
-
-প্রতিদিন বিকাল ৪টা- রাত ৮টা</p>
-            <p>সিরিয়ালের জন্য: <a href="tel:01677958339" class="call-number">01677958339</a></p>
-        </div>
-        <!-- দ্বিতীয় ব্লক -->
-        <div class="info-box">
-            <p>নাম: ডাঃ জান্নাতুল ফেরদৌস</p>
-            <p>যোগ্যতা: এমবিবিএস, বিসিএস (স্বাস্থ্য), এফসিপিএস (গাইনী এন্ড অবস্‌), প্রসূতি ও স্ত্রীরোগ বিশেষজ্ঞ ও সার্জন, সিলেট এম এ জি ওসমানী মেডিকেল কলেজ হাসপাতাল।</p>
-            <p>রোগীয় দেখার স্থান: রয়েল মাল্টিকেয়ার ডায়াগনষ্টিক এন্ড কনসালটেশন সেন্টার
-
-প্রতিদিন বিকাল ৫টা থেকে রাত ৮টা পর্যন্ত।</p>
-            <p>সিরিয়ালের জন্য: <a href="tel:01718005011" class="call-number">01718005011</a>, <a href="tel:01718002112" class="call-number">01718002112</a></p>
-        </div>
-        <!-- তৃতীয় ব্লক -->
-        <div class="info-box">
-            <p>নাম: ডাঃ সৈয়দা ফারহানা রব</p>
-            <p>যোগ্যতা: এমবিবিএস, ডিজিও, এক্স কনসালটেন্ট, গাইনী এন্ড অবস্‌, আবরান হেলথ কেয়ার উত্তরা, ঢাকা।, এক্স রেজিস্ট্রার, গাইনী এন্ড অবস্‌, তায়রুন্নেছা মেমোরিয়াল মেডিকেল কলেজ হাসপাতাল</p>
-            <p>রোগীয় দেখার স্থান: উত্তরা ডায়াগনষ্টিক সেন্টার
-
-প্রতিদিন সকাল ১১টা থেকে দুপুর ২টা পর্যন্ত ও বিকাল ৫টা থেকে রাত ৮টা পর্যন্ত।</p>
-            <p>সিরিয়ালের জন্য: <a href="tel:01770-772483" class="call-number">01770-772483</a></p>
-        </div>
-        <!-- চতুর্থ ব্লক -->
-        <div class="info-box">
-            <p>নাম: ডাঃ হোসনে আরা বেগম (স্বপ্না)</p>
-            <p>যোগ্যতা: এমবিবিএস, বিসিএস (স্বাস্থ্য), এমসিপিএস, এফসিপিএস, গাইনী এন্ড অবস্‌, ২৫০ শয্যা বিশিষ্ট সদর হাসপাতাল, মৌলভীবাজার।</p>
-            <p>রোগীয় দেখার স্থান: লাইফ লাইন ডায়াগনষ্টিক এন্ড কনসালটেন্ট সেন্টার
-
-প্রতিদিন বিকাল ৫টা থেকে রাত ৯টা পর্যন্ত। (সোমবার বন্ধ)</p>
-            <p>সিরিয়ালের জন্য: <a href="tel:01707-075294" class="call-number">01707-075294</a>, <a href="tel:01321-175350" class="call-number">01321-175350</a></p>
-        </div>
-        <!-- পঞ্চম ব্লক -->
-        <div class="info-box">
-            <p>নাম: অধ্যাপক ডাঃ রীনা আক্তার</p>
-            <p>যোগ্যতা: এমএস (অবস্‌ এন্ড গাইনী) এমবিবিএস, বিসিএস (স্বাস্থ্য) সিলেট উইমেন্স মেডিকেল কলেজ।নিঃসন্তান দম্পতির চিকিৎসা ও বন্ধ্যাত্বের উপর বিশেষ প্রশিক্ষণ প্রাপ্ত (থাইল্যান্ড) প্রাক্তন অধ্যাপক, সিলেট এমএজি ওসমানী মেডিকেল কলেজ।
-
-বিএমডিসি রেজিঃ নং- এ-</p>
-            <p>রোগীয় দেখার স্থান: নোভা মাল্টিকেয়ার ডায়াগনষ্টিক সেন্টার
-
-প্রতি শুক্রবার সকাল ১০টা থেকে সন্ধ্যা ৬টা পর্যন্ত।</p>
-            <p>সিরিয়ালের জন্য: <a href="tel:01726-003617" class="call-number">01726-003617</a></p>
-        </div>
-        <!-- ষষ্ঠ ব্লক -->
-        <div class="info-box">
-            <p>নাম: ডাঃ হেপী দাশ</p>
-            <p>যোগ্যতা: এমবিবিএস, বিসিএস, (স্বাস্থ্য) ডিজিটি (ঢাকা মেডিকেল কলেজ) এফসিপিএস গাইনি এন্ড অবস</p>
-            <p>রোগীয় দেখার স্থান: রয়েল মাল্টিকেয়ার ডায়াগনস্টিক এন্ড কনসালটেশন সেন্টার
-
-শ্রীমঙ্গল রোড, বেরীরপার, মৌলভীবাজার।
-
-প্রতিদিন বিকাল ৪টা রাত ৮টা</p>
-            <p>সিরিয়ালের জন্য: <a href="tel:01718005011" class="call-number">01718005011</a>, <a href="tel:01718002112" class="call-number">01718002112</a></p>
-        </div>
-        <!-- সপ্তম ব্লক -->
-        <div class="info-box">
-            <p>নাম: ডাঃ মোঃ আলমগীর হোসেন সরকার</p>
-            <p>যোগ্যতা: এমবিবিএস, ভিজিও, ডি-আল্ট্রাসনোগ্রাম প্রসূতি, স্ত্রীরোগ বিশেষজ্ঞ ও সার্জন জালকুড়ি মা ও শিশু কল্যান কেন্দ্র, নারায়নগঞ্জ।</p>
-            <p>রোগীয় দেখার স্থান: দি ল্যাব আইড ডায়াগনস্টিক এন্ড কনসালটেশন সেন্টার
-
-শ্রীমঙ্গল রোড (মডেল থানার সামনে) মৌলভীবাজার
-
-প্রতি শুক্র শনি ও রবিবার সকাল ১০টা থেকে বিকাল ৫টা।</p>
-            <p>সিরিয়ালের জন্য: <a href="tel:01727919786" class="call-number">01727919786</a>, <a href="tel:01321229778" class="call-number">01321229778</a></p>
-        </div>
-        <!-- অষ্টম ব্লক -->
-        <div class="info-box">
-            <p>নাম: ডাঃ সাদিয়া আক্তার</p>
-            <p>যোগ্যতা: এমবিবিএস, ডিএমইউ, ট্রেনিং ইন অবস এন্ড গাইনী</p>
-            <p>রোগীয় দেখার স্থান: দি ল্যাব আইড ডায়াগনস্টিক এন্ড কনসালটেশন সেন্টার
-
-শ্রীমঙ্গল রোড (মডেল থানার সামনে) মৌলভীবাজার
-
-প্রতিদিন বিকাল ৪টা থেকে রাত ৯টা।</p>
-            <p>সিরিয়ালের জন্য: <a href="tel:01727919786" class="call-number">01727919786</a>, <a href="tel:01321229778" class="call-number">01321229778</a></p>
-        </div>
-        <!-- নবম ব্লক -->
-        <div class="info-box">
-            <p>নাম: ডাঃ রুলী বিনতে রাহিম</p>
-            <p>যোগ্যতা: এমবিবিএস (এস, ইউ) এস, সি, পি, এস (গাইনী এন্ড অবস) বি, সি, এস, (স্বাস্থ্য)  প্রসূতি, স্ত্রীরোগ বিশেষজ্ঞ ও সার্জন সিলেট এম, এ, জি ওসমানী মেডিকেল কলেজ ও হাসপাতাল। কনসালটেন্ট দি পপুলার মেডিকেল সেন্টার এন্ড হসপিটাল।</p>
-            <p>রোগীয় দেখার স্থান:উত্তরা ডায়াগনস্টিক সেন্টার
-
-শ্রীমঙ্গল রোড (মডেল থানার সামনে) মৌলভীবাজার
-
-প্রতি রবিবার, বুধবার বিকাল ৩টা থেকে রাত ৮টা শুক্রবার সকাল ১০টা থেকে দুপুর ২টা।</p>
-            <p>সিরিয়ালের জন্য: <a href="tel:01754758129" class="call-number">01754758129</a>, <a href="tel:01770772483" class="call-number">01770772483</a></p>
-        </div>
-        <!-- দশম ব্লক -->
-        <div class="info-box">
-            <p>নাম: ডাঃ জয়শ্রী সিনহা</p>
-            <p>যোগ্যতা: এম, বি, বি, এস, (ডি, ইউ) সিসিডি (বারডেম), ডিএমইউ মেডিকেল স্পেশালিস্ট সুর্যের হাসি ক্লিনিক, মৌলভীবাজার।</p>
-            <p>রোগীয় দেখার স্থান: মেডিসান ডায়াগনস্টিক এন্ড কনসালটেশন সেন্টার
-
-শ্রীমঙ্গল রোড ( সদর হাসপাতালের বিপরীতে) মৌলভীবাজার।
-
-প্রতিদিন বিকাল ৫টা থেকে রাত ৮টা পর্যন্ত।</p>
-            <p>সিরিয়ালের জন্য: <a href="tel:01775823819" class="call-number">01775823819</a>, <a href="tel:01787277327" class="call-number">01787277327</a></p>
-        </div>
-        <button class="back-btn" onclick="window.location.href='doctor.html'">Back</button>
+        <h2 style="grid-column: span 2;">ডাক্তার</h2> <!-- শিরোনামকে সম্পূর্ণ প্রস্থতে রাখা -->
+        <button onclick="window.location.href='sisu.html'"><img src="doctor.png" alt="Icon"> শিশু বিশেষজ্ঞ</button>
+        <button onclick="window.location.href='gaini.html'"><img src="hospital.png" alt="Icon"> গাইনি এন্ড অবস</button>
+        <button><img src="healthcare.png" alt="Icon"> লেখা ৩</button>
+        <button><img src="blood-donation.png" alt="Icon"> লেখা ৪</button>
+         <button><img src="healthcare.png" alt="Icon"> লেখা ৩</button>
+        <button><img src="blood-donation.png" alt="Icon"> লেখা ৪</button> <button><img src="healthcare.png" alt="Icon"> লেখা ৩</button>
+        <button><img src="blood-donation.png" alt="Icon"> লেখা ৪</button> <button><img src="healthcare.png" alt="Icon"> লেখা ৩</button>
+        <button><img src="blood-donation.png" alt="Icon"> লেখা ৪</button> <button><img src="healthcare.png" alt="Icon"> লেখা ৩</button>
+        <button><img src="blood-donation.png" alt="Icon"> লেখা ৪</button>
+        <button><img src="location.png" alt="Icon"> লেখা ৫</button>
+        <button><img src="vegetarian.png" alt="Icon"> লেখা ৬</button>
+        <button class="floating-btn" onclick="window.location.href='index.html'"><img src="back.png" alt="Icon"> Back</button>
     </div>
 </body>
 </html>
